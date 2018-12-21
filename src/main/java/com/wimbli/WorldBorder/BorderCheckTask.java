@@ -1,21 +1,16 @@
 package com.wimbli.WorldBorder;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.google.common.collect.ImmutableList;
-
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-import org.bukkit.Location;
 import org.bukkit.util.Vector;
-import org.bukkit.World;
+
+import java.util.*;
 
 
 public class BorderCheckTask implements Runnable
@@ -96,7 +91,13 @@ public class BorderCheckTask implements Runnable
 
 		// check if player has something (a pet, maybe?) riding them; only possible through odd plugins.
 		// it can prevent all teleportation of the player completely, so it's very much not good and needs handling
-		List<Entity> passengers = player.getPassengers();
+        List<Entity> passengers;
+        if (player.getPassenger() == null) {
+            passengers = Collections.emptyList();
+        } else {
+            passengers = Collections.singletonList(player.getPassenger());
+        }
+
 		if (!passengers.isEmpty())
 		{
 			player.eject();
@@ -171,7 +172,7 @@ public class BorderCheckTask implements Runnable
 				if (vehicle == null || player == null)
 					return;
 
-				vehicle.addPassenger(player);
+                vehicle.setPassenger(player);
 			}
 		}, delay);
 	}
