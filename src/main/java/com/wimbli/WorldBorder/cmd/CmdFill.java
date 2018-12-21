@@ -1,12 +1,16 @@
 package com.wimbli.WorldBorder.cmd;
 
-import java.util.List;
-
+import com.wimbli.WorldBorder.Config;
+import com.wimbli.WorldBorder.CoordXZ;
+import com.wimbli.WorldBorder.Events.WorldBorderFillCancelEvent;
+import com.wimbli.WorldBorder.WorldBorder;
+import com.wimbli.WorldBorder.WorldFillTask;
 import org.bukkit.Bukkit;
-import org.bukkit.command.*;
+import org.bukkit.World;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.wimbli.WorldBorder.*;
+import java.util.List;
 
 
 public class CmdFill extends WBCmd
@@ -41,7 +45,13 @@ public class CmdFill extends WBCmd
 					return;
 				sender.sendMessage(C_HEAD + "Cancelling the world map generation task.");
 				fillDefaults();
+				World world = Bukkit.getWorld(Config.fillTask.refWorld());
+				if (world != null) {
+					WorldBorderFillCancelEvent event = new WorldBorderFillCancelEvent(world);
+					Bukkit.getServer().getPluginManager().callEvent(event);
+				}
 				Config.StopFillTask();
+
 				return;
 			}
 			else if (check.equals("pause"))
