@@ -1,26 +1,18 @@
 package com.wimbli.WorldBorder;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.UUID;
-
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
-import org.bukkit.entity.Player;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Config
@@ -74,7 +66,6 @@ public class Config
 		if (logIt)
 			log("Border set. " + BorderDescription(world));
 		save(true);
-		DynMapFeatures.showBorder(world, border);
 	}
 	public static void setBorder(String world, BorderData border)
 	{
@@ -134,7 +125,6 @@ public class Config
 		borders.remove(world);
 		log("Removed border for world \"" + world + "\".");
 		save(true);
-		DynMapFeatures.removeBorder(world);
 	}
 
 	public static void removeAllBorders()
@@ -142,7 +132,6 @@ public class Config
 		borders.clear();
 		log("Removed all borders for all worlds.");
 		save(true);
-		DynMapFeatures.removeAllBorders();
 	}
 
 	public static String BorderDescription(String world)
@@ -207,7 +196,6 @@ public class Config
 		shapeRound = round;
 		log("Set default border shape to " + (ShapeName()) + ".");
 		save(true);
-		DynMapFeatures.showAllBorders();
 	}
 
 	public static boolean ShapeRound()
@@ -383,26 +371,12 @@ public class Config
 	}
 
 
-	public static void setDynmapBorderEnabled(boolean enable)
-	{
-		dynmapEnable = enable;
-		log("DynMap border display is now " + (enable ? "enabled" : "disabled") + ".");
-		save(true);
-		DynMapFeatures.showAllBorders();
-	}
 
 	public static boolean DynmapBorderEnabled()
 	{
 		return dynmapEnable;
 	}
 
-	public static void setDynmapMessage(String msg)
-	{
-		dynmapMessage = msg;
-		log("DynMap border label is now set to: " + msg);
-		save(true);
-		DynMapFeatures.showAllBorders();
-	}
 
 	public static String DynmapMessage()
 	{

@@ -1,19 +1,12 @@
 package com.wimbli.WorldBorder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.bukkit.command.*;
+import com.wimbli.WorldBorder.cmd.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.wimbli.WorldBorder.cmd.*;
+import java.util.*;
 
 
 public class WBCommand implements CommandExecutor
@@ -49,8 +42,8 @@ public class WBCommand implements CommandExecutor
 		addCmd(new CmdPreventPlace());	// 1
 		addCmd(new CmdPreventSpawn());	// 1
 		addCmd(new CmdDelay());			// 1
-		addCmd(new CmdDynmap());		// 1
-		addCmd(new CmdDynmapmsg());		// 1
+		// 1
+		// 1
 		addCmd(new CmdRemount());		// 1
 		addCmd(new CmdFillautosave());	// 1
 		addCmd(new CmdPortal());		// 1

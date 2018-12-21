@@ -20,10 +20,6 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
 		</repository>
-		<repository>
-			<id>dynmap-repo</id>
-			<url>https://repo.mikeprimm.com/</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
@@ -38,12 +34,6 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>1.13.1-R0.1-SNAPSHOT</version>
-		</dependency>
-		<!--Dynmap API-->
-		<dependency>
-			<groupId>us.dynmap</groupId>
-			<artifactId>dynmap-api</artifactId>
-			<version>2.5</version>
 		</dependency>
 	</dependencies>
 
