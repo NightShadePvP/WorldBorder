@@ -51,6 +51,7 @@ public class WBCommand implements CommandExecutor
 		addCmd(new CmdDenypearl());		// 1
 		addCmd(new CmdReload());		// 1
 		addCmd(new CmdDebug());			// 1
+		addCmd(new CmdClean());			// NightShade
 
 		// this is the default command, which shows command example pages; should be last just in case
 		addCmd(new CmdCommands());

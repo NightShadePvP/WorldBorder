@@ -42,6 +42,7 @@ commands:
            /<command> preventmobspawn <on|off> - stop mob spawning past border.
            /<command> reload - re-load data from config.yml.
            /<command> debug <on/off> - turn debug mode on or off.
+           /<command> clean - clean unused worlds
 permissions:
   worldborder.*:
     description: Grants all WorldBorder permissions
